@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>㈜청린 CARE-BRIDGE — 모유수유·유방관리 통합케어</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blush:#F5C6CB;
+  --rose:#E8899A;
+  --deep:#C0475A;
+  --deeper:#A03348;
+  --cream:#FDF7F4;
+  --warm:#FBF0EE;
+  --warm2:#F5E4E6;
+  --text:#2C1A1E;
+  --muted:#7A5560;
+  --light:#B08898;
+  --white:#FFFFFF;
+  --border:#EDD5D9;
+  --grad:linear-gradient(135deg,#F5C6CB 0%,#E8899A 60%,#C0475A 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Pretendard',-apple-system,sans-serif;background:var(--cream);color:var(--text);line-height:1.6;}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(192,71,90,0.97);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(245,198,203,0.25);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;height:68px;
+}
+.nav-logo{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:700;color:var(--white);letter-spacing:0.5px;text-decoration:none;}
+.nav-logo span{color:var(--blush);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{text-decoration:none;font-size:13px;font-weight:500;color:rgba(255,255,255,0.85);letter-spacing:0.5px;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-tel{font-size:13px;font-weight:700;color:var(--deep);text-decoration:none;letter-spacing:0.5px;border:none;padding:8px 20px;background:white;transition:all 0.2s;}
+.nav-tel:hover{background:var(--blush);color:var(--deeper);}
+
+/* ── HERO ── */
+.hero{
+  background:var(--grad);min-height:86vh;
+  display:flex;align-items:center;padding:80px 56px;
+  position:relative;overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.06) 1px,transparent 1px);
+  background-size:64px 64px;
+}
+.hero-glow{
+  position:absolute;right:-200px;top:50%;transform:translateY(-50%);
+  width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,0.12) 0%,transparent 70%);
+}
+.hero-blob2{position:absolute;left:-80px;bottom:-80px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.06);pointer-events:none;}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(255,255,255,0.5);padding:8px 20px;
+  font-size:12px;letter-spacing:2.5px;color:white;font-weight:600;margin-bottom:32px;
+  background:rgba(255,255,255,0.15);
+}
+h1.hero-title{
+  font-family:'Noto Serif KR',serif;
+  font-size:clamp(44px,5.5vw,76px);font-weight:900;color:var(--white);
+  line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px;
+}
+/* 히어로 서브타이틀 — 잘 보이게 */
+.hero-sub{
+  font-size:clamp(18px,2vw,22px);
+  font-weight:600;
+  color:#ffffff;
+  letter-spacing:-0.2px;
+  margin-bottom:20px;
+  line-height:1.55;
+  text-shadow:0 1px 6px rgba(120,30,40,0.3);
+}
+/* 히어로 본문 설명 — 잘 보이게 */
+.hero-desc{
+  font-size:clamp(15px,1.5vw,17px);
+  color:rgba(255,255,255,0.95);
+  line-height:1.95;
+  margin-bottom:44px;
+  font-weight:400;
+  max-width:580px;
+  text-shadow:0 1px 4px rgba(100,20,30,0.25);
+}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-white{background:white;color:var(--deep);padding:16px 36px;font-size:15px;font-weight:700;text-decoration:none;letter-spacing:0.3px;transition:all 0.2s;display:inline-block;border-radius:2px;box-shadow:0 8px 24px rgba(0,0,0,0.18);cursor:pointer;border:none;font-family:inherit;}
+.btn-white:hover{background:var(--blush);transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.22);}
+.btn-outline-w{background:transparent;color:white;padding:15px 30px;font-size:15px;font-weight:500;text-decoration:none;border:2px solid rgba(255,255,255,0.65);transition:all 0.2s;display:inline-block;border-radius:2px;}
+.btn-outline-w:hover{border-color:white;background:rgba(255,255,255,0.14);}
+
+/* ── STATS BAR ── */
+.stats-bar{
+  background:var(--deep);padding:28px 56px;
+  display:flex;align-items:center;gap:48px;flex-wrap:wrap;
+  border-bottom:1px solid rgba(245,198,203,0.2);
+}
+.stat{display:flex;align-items:center;gap:14px;}
+.stat-num{font-family:'Noto Serif KR',serif;font-size:32px;font-weight:700;color:var(--blush);line-height:1;}
+.stat-lbl{font-size:13px;font-weight:500;color:rgba(255,255,255,0.8);line-height:1.5;letter-spacing:0.2px;}
+.stat-sep{width:1px;height:36px;background:rgba(245,198,203,0.25);}
+
+/* ── SECTION WRAPPER ── */
+.sp{padding:96px 56px;}
+.sp-sm{padding:72px 56px;}
+.bg-cream{background:var(--cream);}
+.bg-warm{background:var(--warm);}
+.bg-warm2{background:var(--warm2);}
+
+.lbl{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--rose);font-weight:700;margin-bottom:14px;}
+h2.h{font-family:'Noto Serif KR',serif;font-size:clamp(26px,3.2vw,42px);font-weight:700;color:var(--text);line-height:1.25;margin-bottom:18px;letter-spacing:-0.5px;}
+h2.h-w{color:var(--white);}
+.sub{font-size:16px;color:var(--muted);line-height:1.85;max-width:600px;font-weight:400;}
+.sub-w{color:rgba(255,255,255,0.75);}
+
+/* ── SERVICES 2x2 ── */
+.svc-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3px;
+  margin-top:56px;
+  background:var(--border);
+}
+.svc{background:var(--white);padding:48px 40px;transition:background 0.3s;cursor:default;position:relative;}
+.svc:hover{background:var(--deep);}
+.svc:hover .sn{color:rgba(245,198,203,0.15);}
+.svc:hover .st{color:var(--blush);}
+.svc:hover .stitle{color:var(--white);}
+.svc:hover .sbody{color:rgba(255,255,255,0.75);}
+.sn{
+  font-family:'Noto Serif KR',serif;
+  font-size:72px;font-weight:900;
+  color:var(--warm2);
+  line-height:1;margin-bottom:24px;
+  transition:color 0.3s;
+  letter-spacing:-2px;
+}
+.st{font-size:10px;letter-spacing:3px;color:var(--rose);font-weight:700;margin-bottom:10px;transition:color 0.3s;text-transform:uppercase;}
+.stitle{font-size:21px;font-weight:700;color:var(--text);margin-bottom:14px;transition:color 0.3s;line-height:1.3;letter-spacing:-0.3px;}
+.sbody{font-size:14.5px;color:var(--muted);line-height:1.85;font-weight:400;transition:color 0.3s;}
+
+/* ── DIFFERENTIATORS ── */
+.diff-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px;}
+.diff{background:var(--white);border:1px solid var(--border);padding:11px 20px;font-size:13px;font-weight:600;color:var(--text);border-radius:2px;}
+.diff::before{content:'— ';color:var(--rose);font-weight:700;}
+
+/* ── COURSE ── */
+.crs-header{
+  background:var(--deep);padding:48px 52px 40px;
+  border-top:4px solid var(--blush);margin-top:56px;
+}
+.crs-htitle{font-family:'Noto Serif KR',serif;font-size:clamp(24px,3vw,38px);font-weight:700;color:var(--white);margin-bottom:14px;}
+/* 수강생 모집 중 밑 텍스트 — 잘 보이게 */
+.crs-hsub{font-size:16px;color:rgba(255,255,255,0.9);font-weight:400;line-height:1.8;}
+.crs-body{display:grid;grid-template-columns:1fr 1fr;background:var(--white);}
+.crs-left{padding:48px 48px;border-right:1px solid var(--border);}
+.crs-right{padding:48px 48px;background:var(--warm);}
+
+table.ct{width:100%;border-collapse:collapse;}
+table.ct tr{border-bottom:1px solid var(--border);}
+table.ct tr:last-child{border-bottom:none;}
+table.ct th{
+  width:30%;padding:18px 14px 18px 0;
+  font-size:12px;letter-spacing:1px;font-weight:700;
+  color:var(--deep);text-align:left;vertical-align:top;
+  white-space:nowrap;
+}
+table.ct td{
+  padding:18px 0;font-size:14px;color:var(--text);font-weight:400;line-height:1.75;vertical-align:top;
+}
+table.ct td b{font-weight:700;color:var(--deep);}
+
+.price-box{background:var(--deep);padding:28px 32px;margin-top:28px;border-left:4px solid var(--blush);}
+.price-lbl{font-size:11px;letter-spacing:2px;color:var(--blush);margin-bottom:6px;font-weight:600;}
+.price-num{font-family:'Noto Serif KR',serif;font-size:38px;font-weight:700;color:var(--white);}
+.price-num span{font-size:18px;font-weight:400;color:rgba(255,255,255,0.7);}
+
+.contact-box{background:var(--white);border:1px solid var(--border);padding:24px;margin-top:12px;}
+.cl{font-size:11px;letter-spacing:1.5px;color:var(--light);margin-bottom:4px;font-weight:600;}
+.cv-big{font-family:'Noto Serif KR',serif;font-size:26px;font-weight:700;color:var(--deep);margin-bottom:20px;}
+.cv{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.cv-sub{font-size:13px;color:var(--muted);line-height:1.8;font-weight:400;}
+
+.cert-note{
+  display:flex;align-items:flex-start;gap:12px;
+  background:var(--warm2);padding:18px 20px;margin-top:20px;
+  border-left:3px solid var(--rose);
+}
+.cert-note p{font-size:13px;color:var(--muted);line-height:1.7;font-weight:400;}
+.cert-note p b{color:var(--deep);font-weight:700;}
+
+/* ── 신청 버튼 ── */
+.btn-deep{
+  display:block;background:var(--deep);color:white;
+  padding:17px;font-size:15px;font-weight:700;
+  text-decoration:none;letter-spacing:0.3px;
+  text-align:center;margin-top:24px;transition:all 0.2s;
+  font-family:inherit;border-radius:2px;border:none;cursor:pointer;
+  width:100%;
+}
+.btn-deep:hover{background:var(--deeper);transform:translateY(-1px);}
+
+/* ── TEAM ── */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-top:56px;}
+.tc{background:var(--white);border:1px solid var(--border);}
+.tc-top{background:var(--deep);padding:36px 36px 28px;border-bottom:3px solid var(--blush);}
+.tc-name{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:700;color:var(--white);letter-spacing:2px;margin-bottom:6px;}
+.tc-role{font-size:12px;color:var(--blush);letter-spacing:1px;font-weight:500;}
+.tc-bot{padding:32px 36px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+.chip{background:var(--warm2);border:1px solid var(--border);font-size:11px;font-weight:600;color:var(--deep);padding:5px 12px;}
+.clist{list-style:none;}
+.clist li{font-size:13.5px;color:var(--muted);padding:9px 0;font-weight:400;border-bottom:1px solid var(--warm2);display:flex;align-items:baseline;gap:10px;}
+.clist li:last-child{border-bottom:none;}
+.clist li::before{content:'';flex-shrink:0;width:4px;height:4px;border-radius:50%;background:var(--rose);margin-top:8px;}
+
+/* ── PARTNERS — 한 줄 가로 스크롤 ── */
+.partners-row{
+  display:flex;
+  flex-wrap:nowrap;
+  gap:16px;
+  margin-top:48px;
+  overflow-x:auto;
+  padding-bottom:8px;
+}
+.partners-row::-webkit-scrollbar{height:4px;}
+.partners-row::-webkit-scrollbar-track{background:var(--warm2);}
+.partners-row::-webkit-scrollbar-thumb{background:var(--rose);border-radius:2px;}
+.partner{
+  background:var(--white);border:1px solid var(--border);
+  padding:18px 28px;font-size:14px;font-weight:600;color:var(--text);
+  white-space:nowrap;flex-shrink:0;
+}
+
+/* ── CONTACT ── */
+.ctsec{background:var(--deep);padding:96px 56px;}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:rgba(245,198,203,0.2);margin-top:56px;}
+.ct-item{background:rgba(192,71,90,0.6);padding:32px 36px;}
+.ct-lbl{font-size:10px;letter-spacing:3px;color:var(--blush);font-weight:700;margin-bottom:10px;}
+.ct-val{font-size:18px;font-weight:600;color:var(--white);line-height:1.4;}
+.ct-btns{margin-top:48px;display:flex;gap:16px;flex-wrap:wrap;}
+
+/* ── FOOTER ── */
+footer{
+  background:#3A1220;padding:40px 56px;
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;
+}
+.fl{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:700;color:var(--blush);margin-bottom:8px;}
+.fi{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.9;}
+.fr{font-size:11px;color:rgba(255,255,255,0.3);text-align:right;line-height:2;}
+
+/* ── REVEAL ── */
+.rev{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.rev.on{opacity:1;transform:none;}
+
+/* ══════════════════════════════════════
+   설문 모달 (서비스 문의 / 수강 신청 공용)
+══════════════════════════════════════ */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:9000;
+  background:rgba(44,26,30,0.6);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;
+  padding:20px;
+}
+.modal-overlay.open{display:flex;}
+.modal{
+  background:white;max-width:560px;width:100%;
+  border-top:4px solid var(--deep);
+  max-height:90vh;overflow-y:auto;
+  box-shadow:0 24px 80px rgba(44,26,30,0.35);
+  border-radius:2px;
+  animation:slideUp 0.35s ease;
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:none;}}
+.modal-head{
+  background:var(--deep);padding:32px 36px 28px;
+  border-bottom:1px solid rgba(245,198,203,0.2);
+  position:sticky;top:0;z-index:10;
+}
+.modal-head-lbl{font-size:10px;letter-spacing:3px;color:var(--blush);font-weight:700;margin-bottom:8px;}
+.modal-head-title{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:700;color:white;}
+.modal-close{
+  position:absolute;top:28px;right:32px;
+  background:rgba(255,255,255,0.15);border:none;color:white;
+  width:36px;height:36px;border-radius:50%;cursor:pointer;
+  font-size:18px;display:flex;align-items:center;justify-content:center;
+  transition:background 0.2s;
+}
+.modal-close:hover{background:rgba(255,255,255,0.28);}
+.modal-body{padding:36px 36px 28px;}
+
+/* 설문 스텝 */
+.survey-step{display:none;}
+.survey-step.active{display:block;}
+.step-indicator{
+  display:flex;gap:6px;margin-bottom:28px;
+}
+.step-dot{
+  height:4px;border-radius:2px;background:var(--border);
+  flex:1;transition:background 0.3s;
+}
+.step-dot.done{background:var(--rose);}
+.step-dot.current{background:var(--deep);}
+
+.field{margin-bottom:22px;}
+.field label{display:block;font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:0.2px;}
+.field label span{color:var(--rose);}
+.field input,.field select,.field textarea{
+  width:100%;border:1.5px solid var(--border);
+  padding:13px 16px;font-size:14px;font-family:'Pretendard',sans-serif;
+  color:var(--text);background:white;border-radius:2px;
+  transition:border-color 0.2s;outline:none;
+  -webkit-appearance:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--rose);}
+.field textarea{resize:vertical;min-height:80px;line-height:1.7;}
+.field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C0475A' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;}
+
+.time-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.time-opt{
+  border:1.5px solid var(--border);padding:12px 14px;
+  font-size:13px;font-weight:500;color:var(--muted);
+  cursor:pointer;border-radius:2px;transition:all 0.18s;text-align:center;
+  user-select:none;
+}
+.time-opt:hover{border-color:var(--rose);color:var(--deep);}
+.time-opt.selected{border-color:var(--deep);background:var(--warm2);color:var(--deep);font-weight:700;}
+
+.modal-nav{display:flex;gap:12px;margin-top:28px;}
+.btn-modal-next{
+  flex:1;background:var(--deep);color:white;border:none;
+  padding:15px;font-size:14px;font-weight:700;
+  cursor:pointer;font-family:inherit;border-radius:2px;
+  transition:background 0.2s;
+}
+.btn-modal-next:hover{background:var(--deeper);}
+.btn-modal-back{
+  background:transparent;color:var(--muted);border:1.5px solid var(--border);
+  padding:15px 20px;font-size:14px;font-weight:600;
+  cursor:pointer;font-family:inherit;border-radius:2px;
+  transition:all 0.2s;
+}
+.btn-modal-back:hover{border-color:var(--rose);color:var(--deep);}
+
+/* 완료 화면 */
+.survey-done{text-align:center;padding:20px 0 8px;}
+.done-icon{font-size:52px;margin-bottom:16px;}
+.done-title{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:700;color:var(--deep);margin-bottom:10px;}
+.done-sub{font-size:14px;color:var(--muted);line-height:1.8;}
+.done-tel{font-size:20px;font-weight:700;color:var(--deep);margin-top:16px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .sp,.sp-sm,.ctsec{padding:64px 24px;}
+  .hero{padding:72px 24px;min-height:auto;padding-top:80px;}
+  .stats-bar{padding:24px 20px;gap:20px;}
+  .svc-grid{grid-template-columns:1fr;}
+  .crs-body{grid-template-columns:1fr;}
+  .crs-left{border-right:none;border-bottom:1px solid var(--border);padding:36px 24px;}
+  .crs-right{padding:36px 24px;}
+  .crs-header{padding:36px 24px;}
+  .ct-grid{grid-template-columns:1fr;}
+  footer{padding:32px 24px;flex-direction:column;align-items:flex-start;}
+  .fr{text-align:left;}
+  .modal-body{padding:28px 24px 24px;}
+  .modal-head{padding:28px 24px 24px;}
+  .time-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ 설문 모달 ══ -->
+<div class="modal-overlay" id="surveyModal">
+  <div class="modal">
+    <div class="modal-head" style="position:relative;">
+      <div class="modal-head-lbl" id="modalLabel">SERVICE INQUIRY</div>
+      <div class="modal-head-title" id="modalTitle">서비스 문의하기</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <!-- STEP 1 : 기본 정보 -->
+      <div class="survey-step active" id="step1">
+        <div class="step-indicator">
+          <div class="step-dot current" id="dot1"></div>
+          <div class="step-dot" id="dot2"></div>
+          <div class="step-dot" id="dot3"></div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:24px;font-weight:400;">기본 정보를 입력해 주세요. <strong style="color:var(--deep);">(1 / 3)</strong></p>
+
+        <div class="field">
+          <label>성함 <span>*</span></label>
+          <input type="text" id="f_name" placeholder="이름을 입력해 주세요">
+        </div>
+        <div class="field">
+          <label>생년월일 <span>*</span></label>
+          <input type="text" id="f_birth" placeholder="예) 1990-01-15">
+        </div>
+        <div class="field">
+          <label>연락처 <span>*</span></label>
+          <input type="tel" id="f_phone" placeholder="010-0000-0000">
+        </div>
+
+        <div class="modal-nav">
+          <button class="btn-modal-next" onclick="goStep(2)">다음 단계 →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 : 상담 가능 시간 -->
+      <div class="survey-step" id="step2">
+        <div class="step-indicator">
+          <div class="step-dot done"></div>
+          <div class="step-dot current"></div>
+          <div class="step-dot"></div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:24px;font-weight:400;">편하신 상담 시간을 선택해 주세요. <strong style="color:var(--deep);">(2 / 3)</strong></p>
+
+        <div class="field">
+          <label>상담 가능 시간대 <span>*</span> <span style="color:var(--light);font-weight:400;">(복수 선택 가능)</span></label>
+          <div class="time-grid">
+            <div class="time-opt" onclick="toggleTime(this)">오전 9시 – 11시</div>
+            <div class="time-opt" onclick="toggleTime(this)">오전 11시 – 오후 1시</div>
+            <div class="time-opt" onclick="toggleTime(this)">오후 1시 – 3시</div>
+            <div class="time-opt" onclick="toggleTime(this)">오후 3시 – 5시</div>
+            <div class="time-opt" onclick="toggleTime(this)">오후 5시 – 7시</div>
+            <div class="time-opt" onclick="toggleTime(this)">시간 무관 / 언제든지</div>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top:8px;">
+          <label>선호 상담 방법</label>
+          <select id="f_contact_method">
+            <option value="">선택해 주세요</option>
+            <option>전화 통화</option>
+            <option>문자 / 카카오톡</option>
+            <option>이메일</option>
+          </select>
+        </div>
+
+        <div class="modal-nav">
+          <button class="btn-modal-back" onclick="goStep(1)">← 이전</button>
+          <button class="btn-modal-next" onclick="goStep(3)">다음 단계 →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 : 문의 내용 -->
+      <div class="survey-step" id="step3">
+        <div class="step-indicator">
+          <div class="step-dot done"></div>
+          <div class="step-dot done"></div>
+          <div class="step-dot current"></div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:24px;font-weight:400;">문의하실 내용을 선택해 주세요. <strong style="color:var(--deep);">(3 / 3)</strong></p>
+
+        <div class="field" id="serviceTypeField">
+          <label>문의 유형 <span>*</span></label>
+          <select id="f_service_type">
+            <option value="">선택해 주세요</option>
+            <option>모유수유 케어 서비스</option>
+            <option>유방관리 서비스</option>
+            <option>산후 통합 케어</option>
+            <option>전문가 과정 수강 신청</option>
+            <option>기타 문의</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>추가 문의 사항 <span style="color:var(--light);font-weight:400;">(선택)</span></label>
+          <textarea id="f_memo" placeholder="궁금하신 점이나 특이사항을 자유롭게 적어 주세요."></textarea>
+        </div>
+
+        <div class="modal-nav">
+          <button class="btn-modal-back" onclick="goStep(2)">← 이전</button>
+          <button class="btn-modal-next" onclick="submitSurvey()">신청 완료 ✓</button>
+        </div>
+      </div>
+
+      <!-- DONE -->
+      <div class="survey-step" id="stepDone">
+        <div class="survey-done">
+          <div class="done-icon">🌸</div>
+          <div class="done-title">접수가 완료되었습니다</div>
+          <div class="done-sub">
+            입력하신 연락처로 <strong>24시간 이내</strong>에 담당자가<br>
+            직접 연락드리겠습니다.<br><br>
+            급하신 경우 아래 번호로 직접 연락해 주세요.
+          </div>
+          <div class="done-tel">📞 010-6602-5040</div>
+          <button class="btn-deep" style="margin-top:28px;max-width:240px;margin-left:auto;margin-right:auto;" onclick="closeModal()">확인</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a class="nav-logo" href="#">㈜<span>청린</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">사업 개요</a></li>
+    <li><a href="#services">서비스</a></li>
+    <li><a href="#course">교육과정</a></li>
+    <li><a href="#team">전문가</a></li>
+    <li><a href="#contact">문의</a></li>
+  </ul>
+  <a class="nav-tel" href="tel:01066025040">010-6602-5040</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="about">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🌸 모유수유 · 유방관리 · 산후 통합케어</div>
+    <h1 class="hero-title">CARE–BRIDGE</h1>
+    <p class="hero-sub">출산 이후 끊기지 않는 통합 부모 케어 시스템</p>
+    <p class="hero-desc">
+      임신부터 출산, 산후 6주 집중 케어, 영아기 12개월까지—<br>
+      의료·교육·코칭을 결합한 연속 케어로 산모와 아기의 건강한 첫 걸음을 함께합니다.
+    </p>
+    <div class="hero-btns">
+      <button class="btn-white" onclick="openModal('service')">서비스 문의하기</button>
+      <a href="#course" class="btn-outline-w">교육과정 보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">30+</div><div class="stat-lbl">년 임상 경험<br>전문가 팀</div></div>
+  <div class="stat-sep"></div>
+  <div class="stat"><div class="stat-num">4단계</div><div class="stat-lbl">통합 케어<br>시스템</div></div>
+  <div class="stat-sep"></div>
+  <div class="stat"><div class="stat-num">12개월</div><div class="stat-lbl">연속 케어<br>지원 기간</div></div>
+  <div class="stat-sep"></div>
+  <div class="stat"><div class="stat-num">3곳</div><div class="stat-lbl">협력<br>산후조리원</div></div>
+</div>
+
+<!-- ══ SERVICES ══ -->
+<section class="sp bg-cream" id="services">
+  <div class="rev">
+    <div class="lbl">OUR SERVICES</div>
+    <h2 class="h">임신부터 영아기까지<br>4단계 통합 케어</h2>
+    <p class="sub">출산부터 성장까지, 끊김 없이 이어지는 통합 케어 시스템으로 육아 공백을 해소합니다.</p>
+  </div>
+
+  <div class="svc-grid rev">
+    <div class="svc">
+      <div class="sn">01</div>
+      <div class="st">PRENATAL</div>
+      <div class="stitle">산전 준비 교육</div>
+      <div class="sbody">출산 전 모유수유·신생아 케어·부모 역할 교육으로 불안을 사전에 차단합니다.</div>
+    </div>
+    <div class="svc">
+      <div class="sn">02</div>
+      <div class="st">6-WEEK INTENSIVE</div>
+      <div class="stitle">산후 6주 집중 케어</div>
+      <div class="sbody">신체 회복·모유수유·신생아 케어·부모 정서 안정을 통합 관리하는 핵심 프로그램입니다.</div>
+    </div>
+    <div class="svc">
+      <div class="sn">03</div>
+      <div class="st">CONTINUAL CARE</div>
+      <div class="stitle">0~12개월 지속 관리</div>
+      <div class="sbody">영아기 전 주기에 걸친 연속 케어 제공으로 육아 공백을 최소화합니다.</div>
+    </div>
+    <div class="svc">
+      <div class="sn">04</div>
+      <div class="st">DIGITAL SUPPORT</div>
+      <div class="stitle">디지털 상담 &amp; 커뮤니티</div>
+      <div class="sbody">비대면 상담·정보 가이드·부모 커뮤니티 운영으로 맞춤 지원을 제공합니다.</div>
+    </div>
+  </div>
+
+  <div class="diff-row rev">
+    <div class="diff">의료 + 교육 + 코칭 통합 모델</div>
+    <div class="diff">산후 6주 집중 개입 구조</div>
+    <div class="diff">오프라인 + 디지털 결합 운영</div>
+    <div class="diff">부모 불안 감소를 핵심 성과 지표로 설정</div>
+  </div>
+</section>
+
+<!-- ══ COURSE ══ -->
+<section class="sp-sm bg-warm2" id="course">
+  <div class="rev">
+    <div class="lbl">EDUCATION PROGRAM</div>
+    <h2 class="h">한국 SMC 모유·유방관리<br>전문가 과정</h2>
+    <p class="sub">간호사, 조산사, 간호조무사, 피부관리사로 모유수유 상담 및 유방관리 분야 전문가를 희망하는 분을 위한 과정입니다.</p>
+  </div>
+
+  <div class="rev">
+    <div class="crs-header">
+      <div class="crs-htitle">수강생 모집 중</div>
+      <div class="crs-hsub">한국 SMC 모유·유방관리연구소 공식 전문가 양성 과정 — 일본 SMC 통곡식 유방기법 25년 노하우 전수</div>
+    </div>
+
+    <div class="crs-body">
+      <div class="crs-left">
+        <table class="ct">
+          <tr>
+            <th>교육 대상자</th>
+            <td>조산사, 간호사, 국제모유수유전문가, 간호조무사, 피부관리사로 모유수유 상담 및 유방관리를 희망하는 분</td>
+          </tr>
+          <tr>
+            <th>교육 시간</th>
+            <td><b>이론 교육 15시간 + 실습 5시간</b> (총 20시간)</td>
+          </tr>
+          <tr>
+            <th>이론 교육 장소</th>
+            <td>인천 부평구 — 7호선 굴포천역에서 10분 거리</td>
+          </tr>
+          <tr>
+            <th>실습 장소</th>
+            <td>경기도 이천 양정본 산부인과 모유크리닉 내</td>
+          </tr>
+          <tr>
+            <th>수료 혜택</th>
+            <td><b>한국 SMC 모유수유·유방관리 수료증 발급</b></td>
+          </tr>
+        </table>
+        <div class="cert-note">
+          <p><b>수료증 발급 기관:</b> 한국SMC모유수유·유방관리연구소 / ㈜청린<br>수료 후 산부인과·산후조리원 컨설팅 및 전문 인력으로 활동 가능합니다.</p>
+        </div>
+      </div>
+
+      <div class="crs-right">
+        <div class="lbl">TUITION FEE</div>
+        <div class="price-box">
+          <div class="price-lbl">교육비</div>
+          <div class="price-num">200<span>만원</span></div>
+        </div>
+
+        <div style="margin-top:32px;">
+          <div class="lbl">CONTACT &amp; APPLY</div>
+          <div class="contact-box">
+            <div class="cl">접수 문의 전화</div>
+            <div class="cv-big">010-6602-5040</div>
+            <div class="cl">강사 프로필</div>
+            <div class="cv">홍순미 총괄원장</div>
+            <div class="cv-sub">
+              간호사 · 조산사 · 국제모유수유전문가<br>
+              일본SMC 유방관리학 연수 전문가<br>
+              통곡식 유방기법지도 25년 노하우 전수
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-deep" onclick="openModal('course')">지금 바로 수강 신청하기</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEAM ══ -->
+<section class="sp bg-warm" id="team">
+  <div class="rev">
+    <div class="lbl">OUR TEAM</div>
+    <h2 class="h">전문가를 소개합니다</h2>
+    <p class="sub">30년 이상의 임상 경험과 국제 공인 자격을 갖춘 전문가 팀이 산모와 신생아의 건강을 책임집니다.</p>
+  </div>
+  <div class="team-grid rev">
+    <div class="tc">
+      <div class="tc-top">
+        <div class="tc-name">우 정 희</div>
+        <div class="tc-role">대표이사 · ㈜청린 CHEONGRIN COMPANY</div>
+      </div>
+      <div class="tc-bot">
+        <ul class="clist">
+          <li>전 라뽀스킨엔바디 대표 (서울 구의점·잠실점)</li>
+          <li>전 산본제일모젤조리원 모유수유 에스테틱 대표</li>
+          <li>전 안양샘병원 모유수유 에스테틱 대표</li>
+          <li>전 일산차병원 모유수유 실장</li>
+          <li>전 라임산후조리원 대표원장 (시흥)</li>
+          <li>현 양정분산부인과 모유수유 산후에스테틱 대표</li>
+          <li>현 원주 다올산후조리원 모유수유 에스테틱 대표</li>
+          <li>현 영월공공산후조리원 에스테틱 운영</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tc">
+      <div class="tc-top">
+        <div class="tc-name">홍 순 미</div>
+        <div class="tc-role">총괄원장 · 한국 SMC 모유·유방관리연구소</div>
+      </div>
+      <div class="tc-bot">
+        <div class="chips">
+          <span class="chip">간호사</span><span class="chip">조산사</span>
+          <span class="chip">보건학 석사</span><span class="chip">국제모유수유전문가</span>
+          <span class="chip">경동대 교수(전)</span><span class="chip">국제유아마사지강사</span>
+          <span class="chip">평생교육사</span>
+        </div>
+        <ul class="clist">
+          <li>일본SMC 유방관리학 연수 — 통곡식 유방기법 25년 전수</li>
+          <li>KBS·MBC·SBS·MBC라디오 모유수유 전문가 출연</li>
+          <li>서울시 모유수유 자문위원</li>
+          <li>모자보건사업 증진 보건복지부 장관상 (2006)</li>
+          <li>2023 대한민국인적자원개발 명강사 대상</li>
+          <li>저서: 내 아이의 자존감을 높이는 태교와 육아 외</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARTNERS ══ -->
+<section class="sp-sm bg-warm2">
+  <div class="rev">
+    <div class="lbl">PARTNERS</div>
+    <h2 class="h">주요 협력 기관</h2>
+    <p class="sub">검증된 의료기관 및 산후조리원과 함께 통합 케어 생태계를 구축하고 있습니다.</p>
+  </div>
+  <div class="partners-row rev">
+    <div class="partner">양정분 산부인과</div>
+    <div class="partner">원주 다올산후조리원</div>
+    <div class="partner">영월 공공산후조리원</div>
+    <div class="partner">한국 SMC 모유·유방관리연구소</div>
+    <div class="partner">라임테라피 에스테틱</div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="ctsec" id="contact">
+  <div class="rev">
+    <div class="lbl">CONTACT</div>
+    <h2 class="h h-w">지금 바로 상담하세요</h2>
+    <p class="sub sub-w">궁금한 점이 있으시면 전화 또는 이메일로 편하게 문의 주세요.</p>
+  </div>
+  <div class="ct-grid rev">
+    <div class="ct-item">
+      <div class="ct-lbl">PHONE</div>
+      <div class="ct-val">010-6602-5040</div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-lbl">EMAIL</div>
+      <div class="ct-val">woojung5040@naver.com</div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-lbl">ADDRESS</div>
+      <div class="ct-val">경기도 이천시<br>이섭대천로 1186</div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-lbl">COMPANY</div>
+      <div class="ct-val">㈜청린<br>CHEONGRIN COMPANY</div>
+    </div>
+  </div>
+  <div class="ct-btns rev">
+    <button class="btn-white" onclick="openModal('service')">📋 서비스 문의하기</button>
+    <a href="mailto:woojung5040@naver.com" class="btn-outline-w">이메일 보내기</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div>
+    <div class="fl">㈜청린 CHEONGRIN COMPANY</div>
+    <div class="fi">경기도 이천시 이섭대천로 1186<br>Tel. 010-6602-5040 · Email. woojung5040@naver.com<br>대표이사 우정희 · 총괄원장 홍순미</div>
+  </div>
+  <div class="fr">CARE–BRIDGE<br>한국 SMC 모유·유방관리연구소<br>© 2025 ㈜청린 All rights reserved.</div>
+</footer>
+
+<script>
+/* ── Scroll reveal ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*80);io.unobserve(e.target);}
+  });
+},{threshold:0.08});
+document.querySelectorAll('.rev').forEach(r=>io.observe(r));
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+/* ══ 설문 모달 ══ */
+let currentStep=1;
+
+function openModal(type){
+  const modal=document.getElementById('surveyModal');
+  const label=document.getElementById('modalLabel');
+  const title=document.getElementById('modalTitle');
+  const svcField=document.getElementById('serviceTypeField');
+  const svcSel=document.getElementById('f_service_type');
+
+  if(type==='course'){
+    label.textContent='EDUCATION APPLY';
+    title.textContent='수강 신청하기';
+    // 문의 유형을 수강 신청으로 기본 선택
+    svcSel.value='전문가 과정 수강 신청';
+  } else {
+    label.textContent='SERVICE INQUIRY';
+    title.textContent='서비스 문의하기';
+    svcSel.value='';
+  }
+
+  goStep(1);
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  document.getElementById('surveyModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function goStep(n){
+  document.querySelectorAll('.survey-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+  currentStep=n;
+}
+
+function toggleTime(el){
+  el.classList.toggle('selected');
+}
+
+async function submitSurvey(){
+  // 필수 값 체크
+  const name=document.getElementById('f_name').value.trim();
+  const phone=document.getElementById('f_phone').value.trim();
+  const svcType=document.getElementById('f_service_type').value;
+  if(!name){alert('성함을 입력해 주세요.');return;}
+  if(!phone){alert('연락처를 입력해 주세요.');return;}
+  if(!svcType){alert('문의 유형을 선택해 주세요.');return;}
+
+  // 데이터 수집
+  const birth=document.getElementById('f_birth').value.trim();
+  const contactMethod=document.getElementById('f_contact_method').value;
+  const memo=document.getElementById('f_memo').value.trim();
+  const selectedTimes=[...document.querySelectorAll('.time-opt.selected')].map(el=>el.textContent).join(', ')||'미선택';
+  const modalTitle=document.getElementById('modalTitle').textContent;
+
+  // 전송 버튼 비활성화
+  const btn=document.querySelector('#step3 .btn-modal-next');
+  btn.textContent='전송 중...';
+  btn.disabled=true;
+
+  try{
+    const res=await fetch('https://formspree.io/f/xzdqzaoe',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        '문의유형': modalTitle,
+        '성함': name,
+        '생년월일': birth||'미입력',
+        '연락처': phone,
+        '상담가능시간': selectedTimes,
+        '선호상담방법': contactMethod||'미선택',
+        '서비스유형': svcType,
+        '추가문의': memo||'없음'
+      })
+    });
+    if(res.ok){
+      goStep('Done');
+    } else {
+      alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+    }
+  } catch(e){
+    alert('네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+  } finally {
+    btn.textContent='신청 완료 ✓';
+    btn.disabled=false;
+  }
+}
+
+// 모달 바깥 클릭시 닫기
+document.getElementById('surveyModal').addEventListener('click',function(e){
+  if(e.target===this)closeModal();
+});
+</script>
+</body>
+</html>
